@@ -123,7 +123,7 @@ def plot_boxplot(sensor_a, sensor_b, ax):
     -------
     None
     """
-    ax.boxplot([sensor_a, sensor_b], labels=['Sensor A', 'Sensor B'])
+    ax.boxplot([sensor_a, sensor_b], tick_labels=['Sensor A', 'Sensor B'])
     overall_mean = np.mean(np.concatenate([sensor_a, sensor_b]))
     ax.axhline(overall_mean, color='red', linestyle='--', linewidth=2,
                label=f'Overall mean ({overall_mean:.2f} °C)')

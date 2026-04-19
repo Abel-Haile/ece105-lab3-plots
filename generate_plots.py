@@ -145,10 +145,12 @@ def main():
     None
     """
     sensor_a, sensor_b, timestamps = generate_data(seed=2493)
-    fig, axes = plt.subplots(1, 3, figsize=(18, 5))
+    fig, axes = plt.subplots(2, 2, figsize=(14, 10))
+    axes = axes.flatten()
     plot_scatter(sensor_a, sensor_b, timestamps, axes[0])
     plot_histogram(sensor_a, sensor_b, axes[1])
     plot_boxplot(sensor_a, sensor_b, axes[2])
+    axes[3].axis('off')
     plt.tight_layout()
     plt.savefig('sensor_analysis.png', dpi=150, bbox_inches='tight')
     plt.show()

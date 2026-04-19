@@ -132,3 +132,27 @@ def plot_boxplot(sensor_a, sensor_b, ax):
     ax.set_title('Distribution Comparison')
     ax.legend()
     ax.grid(True, alpha=0.3)
+# Create main() that generates data, creates a 1x3 subplot figure,
+# calls each plot function, adjusts layout, and saves as sensor_analysis.png
+# at 150 DPI with tight bounding box.
+
+
+def main():
+    """Generate sensor data and save a 1x3 figure of all three plots.
+
+    Returns
+    -------
+    None
+    """
+    sensor_a, sensor_b, timestamps = generate_data(seed=2493)
+    fig, axes = plt.subplots(1, 3, figsize=(18, 5))
+    plot_scatter(sensor_a, sensor_b, timestamps, axes[0])
+    plot_histogram(sensor_a, sensor_b, axes[1])
+    plot_boxplot(sensor_a, sensor_b, axes[2])
+    plt.tight_layout()
+    plt.savefig('sensor_analysis.png', dpi=150, bbox_inches='tight')
+    plt.show()
+
+
+if __name__ == '__main__':
+    main()
